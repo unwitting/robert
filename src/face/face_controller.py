@@ -18,7 +18,7 @@ class FaceController:
         self._display_dimensions = (self._display_width, self._display_height)
         self._images = {
             "BLANK": self._create_block_colour_image((0, 0, 0)),
-            "BOOT_INDICATOR": self._load_image_file("woman_student.png"),
+            "BOOT_INDICATOR": self._load_image_file("gears.jpg"),
             "BOOT_COMPLETE_INDICATOR": self._load_image_file("tick.png"),
             "RED": self._create_block_colour_image((255, 0, 0)),
         }
