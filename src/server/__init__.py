@@ -7,7 +7,7 @@ robot = None
 def start(r):
   global robot
   robot = r
-  app.run()
+  app.run(host="0.0.0.0")
 
 @app.route('/')
 def robert():
