@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 
 app = Flask(__name__)
@@ -16,3 +16,9 @@ def robert():
 @app.route('/dance', methods=['POST'])
 def dance():
   return json.dumps('done')
+
+@app.route('/move', methods=['POST'])
+def move():
+  # print(request.json)
+  direction = request.json['direction']
+  return json.dumps(direction)
