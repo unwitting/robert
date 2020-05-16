@@ -16,8 +16,6 @@ const appStart = function() {
     .then((x) => console.log(x))
   }
 
-
-
   const danceButton = document.querySelector('#dance')
   danceButton.addEventListener('click', (e) => {
     postData('/dance')
@@ -71,6 +69,30 @@ const appStart = function() {
   const stopButton = document.querySelector('#stop')
   stopButton.addEventListener('click', (e) => {
     stopMovement()
+  })
+
+  document.addEventListener('keydown', e => {
+    console.log(e.key)
+    data = {}
+    if(e.key == 'ArrowUp' || e.key == 'w') {
+      data['direction'] = 'forward'
+    } else if(e.key == 'ArrowRight' || e.key == 'd') {
+      data['direction'] = 'right'
+    } else if(e.key == 'ArrowDown' || e.key == 's') {
+      data['direction'] = 'reverse'
+    } else if(e.key == 'ArrowLeft' || e.key == 'a') {
+      data['direction'] = 'left'
+    }
+    postData('/move', data) 
+    .then((x) => console.log(x))
+  })
+
+  document.addEventListener('keyup', e => {
+    data = {}
+    acceptedKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft', 'w', 'd','s', 'a']
+    if (acceptedKeys.indexOf(e.key) > -1) {
+      stopMovement()
+    }
   })
 }
 
