@@ -1,0 +1,63 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 25% auto 25%;
+  grid-template-rows: 25% auto 25%;
+  grid-template-areas: 
+    "header header header"
+    "sidebar-l main sidebar-r"
+    "footer footer footer"
+}
+
+#header {
+  text-align: center;
+  grid-area: header;
+}
+
+
+#move-controls {
+  width: 100%;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: 
+    "top-l top-m top-r"
+    "center-l center-m center-r"
+    "bottom-l bottom-m bottom-r"
+}
+
+#forward {
+  grid-area: top-m;
+}
+
+#reverse {
+  grid-area: bottom-m;
+}
+
+#left {
+  grid-area: center-l;
+}
+
+#right {
+  grid-area: center-r;
+}
+
+#dance {
+  grid-area: sidebar-l;
+  height: 3em;
+  width: 6em;
+}
+
+.direction-button {
+  border-radius: 30px;
+  border: 2px solid black;
+  width: 100%;
+}
+
+
