@@ -19,6 +19,5 @@ def dance():
 
 @app.route('/move', methods=['POST'])
 def move():
-  # print(request.json)
   direction = request.json['direction']
   return json.dumps(direction)

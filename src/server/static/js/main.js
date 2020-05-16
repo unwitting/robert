@@ -35,7 +35,6 @@ const appStart = function() {
     data = {'direction': 'left'}
     postData('/move', data)
     .then((x) => console.log(x))
-
   })
 
   const rightButton = document.querySelector('#right')
@@ -43,7 +42,6 @@ const appStart = function() {
     data = {'direction': 'right'}
     postData('/move', data)
     .then((x) => console.log(x))
-
   })
 }
 
