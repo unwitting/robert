@@ -8,8 +8,6 @@ else:
 
 
 class MotionController:
-    RIGHT_MOTOR_LIST_CORRECT = 1.11
-
     SPEED_STOP = 0
     SPEED_SLOW = 10
     SPEED_STANDARD = 25
@@ -24,17 +22,7 @@ class MotionController:
 
     async def boot(self):
         self._log("Booting")
-        await self.forward_for(1, self.SPEED_STANDARD)
-        await asyncio.sleep(0.25)
-        await self.backward_for(1, self.SPEED_STANDARD)
-        await asyncio.sleep(0.25)
-
-        await self.turn_clockwise_for(1.25, self.SPEED_STANDARD)
-        await asyncio.sleep(0.25)
-        await self.turn_anticlockwise_for(2.5, self.SPEED_STANDARD)
-        await asyncio.sleep(0.25)
-        await self.turn_clockwise_for(1.25, self.SPEED_STANDARD)
-        await asyncio.sleep(0.25)
+        await self._boot_sequence()
         self._log("Finished booting")
 
     def backward(self, speed: float = None):
@@ -85,6 +73,19 @@ class MotionController:
         self.turn_anticlockwise(speed)
         await asyncio.sleep(secs)
         self.stop()
+
+    async def _boot_sequence(self):
+        await self.forward_for(0.1, self.SPEED_SLOW)
+        await asyncio.sleep(0.1)
+        await self.backward_for(0.11, self.SPEED_SLOW)
+        await asyncio.sleep(0.1)
+
+        await self.turn_clockwise_for(0.25, self.SPEED_SLOW)
+        await asyncio.sleep(0.1)
+        await self.turn_anticlockwise_for(0.5, self.SPEED_SLOW)
+        await asyncio.sleep(0.1)
+        await self.turn_clockwise_for(0.25, self.SPEED_SLOW)
+        await asyncio.sleep(0.1)
 
     def _log(self, s: str):
         print('MotionController : {}'.format(s))
