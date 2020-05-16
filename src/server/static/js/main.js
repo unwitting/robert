@@ -10,6 +10,14 @@ async function postData(url = '', data = {}) {
 }
 
 const appStart = function() {
+  const stopMovement = function() {
+    data = {'direction': 'stop'}
+    postData('/move', data)
+    .then((x) => console.log(x))
+  }
+
+
+
   const danceButton = document.querySelector('#dance')
   danceButton.addEventListener('click', (e) => {
     postData('/dance')
@@ -17,38 +25,52 @@ const appStart = function() {
   })
 
   const forwardButton = document.querySelector('#forward')
-  forwardButton.addEventListener('click', (e) => {
+  forwardButton.addEventListener('mousedown', (e) => {
     data = {'direction': 'forward'}
     postData('/move', data)
     .then((x) => console.log(x))
   })
 
+  forwardButton.addEventListener('mouseup', (e) => {
+    stopMovement()
+  })
+
   const reverseButton = document.querySelector('#reverse')
-  reverseButton.addEventListener('click', (e) => {
+  reverseButton.addEventListener('mousedown', (e) => {
     data = {'direction': 'reverse'}
     postData('/move', data)
     .then((x) => console.log(x))
   })
 
+  reverseButton.addEventListener('mouseup', (e) => {
+    stopMovement()
+  })
+
   const leftButton = document.querySelector('#left')
-  leftButton.addEventListener('click', (e) => {
+  leftButton.addEventListener('mousedown', (e) => {
     data = {'direction': 'left'}
     postData('/move', data)
     .then((x) => console.log(x))
   })
 
+  leftButton.addEventListener('mouseup', (e) => {
+    stopMovement()
+  })
+
   const rightButton = document.querySelector('#right')
-  rightButton.addEventListener('click', (e) => {
+  rightButton.addEventListener('mousedown', (e) => {
     data = {'direction': 'right'}
     postData('/move', data)
     .then((x) => console.log(x))
   })
 
+  rightButton.addEventListener('mouseup', (e) => {
+    stopMovement()
+  })
+
   const stopButton = document.querySelector('#stop')
   stopButton.addEventListener('click', (e) => {
-    data = {'direction': 'stop'}
-    postData('/move', data)
-    .then((x) => console.log(x))
+    stopMovement()
   })
 }
 

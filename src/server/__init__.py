@@ -16,7 +16,8 @@ def robert():
 
 @app.route('/dance', methods=['POST'])
 def dance():
-  return json.dumps('done')
+  robot.dance()
+  return json.dumps('dance')
 
 @app.route('/move', methods=['POST'])
 def move():
