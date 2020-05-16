@@ -43,6 +43,13 @@ const appStart = function() {
     postData('/move', data)
     .then((x) => console.log(x))
   })
+
+  const stopButton = document.querySelector('#stop')
+  stopButton.addEventListener('click', (e) => {
+    data = {'direction': 'stop'}
+    postData('/move', data)
+    .then((x) => console.log(x))
+  })
 }
 
 

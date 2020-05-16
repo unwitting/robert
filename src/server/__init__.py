@@ -5,8 +5,9 @@ app = Flask(__name__)
 robot = None
 
 def start(r):
-  app.run()
+  global robot
   robot = r
+  app.run()
 
 @app.route('/')
 def robert():
@@ -19,5 +20,13 @@ def dance():
 
 @app.route('/move', methods=['POST'])
 def move():
+  movements = {
+    'forward': robot.begin_forward_move,
+    'reverse': robot.begin_backward_move,
+    'left': robot.begin_anticlockwise_turn,
+    'right': robot.begin_clockwise_turn,
+    'stop': robot.begin_brake,
+  }
   direction = request.json['direction']
+  movements[direction]()
   return json.dumps(direction)
