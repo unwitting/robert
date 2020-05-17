@@ -6,12 +6,12 @@ html, body {
 body {
   display: grid;
   justify-items: center;
-  grid-template-columns: 25% auto 25%;
+  grid-template-columns: 10% 25% auto 25% 10%;
   grid-template-rows: 25% auto 25%;
   grid-template-areas: 
-    "header header header"
-    "sidebar-l main sidebar-r"
-    "footer footer footer"
+    "edge-l header header header edge-r"
+    "edge-l sidebar-l main sidebar-r edge-r"
+    "edge-l footer footer footer edge-r"
 }
 
 #header {
@@ -52,17 +52,24 @@ body {
   grid-area: center-m;
 }
 
-#dance {
+#emote-controlls {
   grid-area: sidebar-l;
+}
+
+#dance {
   height: 3em;
   width: 6em;
 }
 
-.direction-button {
+button {
   border-radius: 30px;
   border: 2px solid black;
   width: 90%;
   height: 90%;
+}
+
+button:active {
+  background-color: red;
 }
 
 
